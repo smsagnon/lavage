@@ -1,3 +1,5 @@
+import 'package:car_wash_app/features/client/presentation/screens/client_screen.dart';
+import 'package:car_wash_app/features/employee/presentation/screens/employee_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -37,6 +39,20 @@ final _router = GoRouter(
         return MainScreen(user: user);
       },
     ),
+    GoRoute(
+      path: '/employees',
+      builder: (context, state) {
+        final user = state.extra as User;
+        return EmployeeScreen(user: user);
+      }, 
+    ),
+    GoRoute(
+        path: '/clients',
+        builder: (context, state) {
+          final user = state.extra as User;
+          return ClientScreen(
+              user: user); 
+        }),
   ],
 );
 

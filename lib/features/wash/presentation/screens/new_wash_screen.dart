@@ -97,6 +97,7 @@ class _NewWashScreenState extends State<NewWashScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+                  //multidropdown here
                   Card(
                     child: Padding(
                       padding: const EdgeInsets.all(16),

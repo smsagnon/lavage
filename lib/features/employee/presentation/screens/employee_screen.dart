@@ -42,31 +42,45 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
     return AppLayout(
       title: 'Employés',
       user: widget.user,
-      child: BlocBuilder<EmployeeBloc, EmployeeState>(
-        builder: (context, state) {
-          if (state is EmployeeLoading) {
-            return const Center(child: CircularProgressIndicator());
-          }
+      child: Stack(
+        children: [
+          BlocBuilder<EmployeeBloc, EmployeeState>(
+            builder: (context, state) {
+              if (state is EmployeeLoading) {
+                return const Center(child: CircularProgressIndicator());
+              }
 
-          if (state is EmployeeLoaded) {
-            return ListView.builder(
-              itemCount: state.employees.length,
-              itemBuilder: (context, index) {
-                final employee = state.employees[index];
-                return EmployeeCard(
-                  employee: employee,
-                  onTap: () => _navigateToEmployeeForm(employee),
+              if (state is EmployeeLoaded) {
+                return ListView.builder(
+                  itemCount: state.employees.length,
+                  itemBuilder: (context, index) {
+                    final employee = state.employees[index];
+                    return EmployeeCard(
+                      employee: employee,
+                      onTap: () => _navigateToEmployeeForm(employee),
+                    );
+                  },
                 );
-              },
-            );
-          }
+              }
 
-          if (state is EmployeeError) {
-            return Center(child: Text(state.message));
-          }
+              if (state is EmployeeError) {
+                return Center(child: Text(state.message));
+              }
 
-          return const Center(child: Text('No employees found'));
-        },
+              return const Center(child: Text('No employees found'));
+            },
+          ),
+          Positioned(
+            right: 16,
+            bottom: 16,
+            child: FloatingActionButton(
+              heroTag: 'addEmployeeButton', // Unique tag here
+              onPressed: _navigateToEmployeeForm,
+              backgroundColor: Theme.of(context).primaryColor,
+              child: const Icon(Icons.add),
+            ),
+          ),
+        ],
       ),
     );
   }

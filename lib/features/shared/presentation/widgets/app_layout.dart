@@ -63,14 +63,6 @@ class AppLayout extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Settings'),
-              onTap: () {
-                Navigator.pop(context);
-                // TODO: Navigate to settings
-              },
-            ),
-            ListTile(
               leading: const Icon(Icons.person),
               title: const Text('Profile'),
               onTap: () {
@@ -79,11 +71,29 @@ class AppLayout extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.help),
-              title: const Text('Help'),
+              leading: const Icon(Icons.home),
+              title: const Text('Lavage auto'),
               onTap: () {
                 Navigator.pop(context);
-                // TODO: Navigate to help
+                // TODO: Navigate to settings
+              },
+            ),
+            
+            const Divider(),
+            ListTile(
+              leading: const Icon(Icons.group),
+              title: const Text('Employés'),
+              onTap: () {
+                Navigator.pop(context);
+                context.go('/employees'); // Navigate to employees screen
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.people),
+              title: const Text('Clients'),
+              onTap: () {
+                Navigator.pop(context);
+                context.go('/clients'); // Navigate to clients screen
               },
             ),
             const Divider(),

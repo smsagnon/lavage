@@ -27,6 +27,7 @@ class EmployeeBloc extends Bloc<EmployeeEvent, EmployeeState> {
           contractEndDate: DateTime(2024, 12, 31),
           contractEndReason: null,
           photoPath: null,
+          salary: 100000
         ),
         EmployeeList(
           id: '2',
@@ -38,6 +39,7 @@ class EmployeeBloc extends Bloc<EmployeeEvent, EmployeeState> {
           contractEndDate: null,
           contractEndReason: null,
           photoPath: null,
+           salary: 120000
         ),
       ];
       emit(EmployeeLoaded(employees));
